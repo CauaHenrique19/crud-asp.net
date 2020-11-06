@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "eXnQ36xhO5OtL2XSHPJZXqu4V/17MJ00ZPHNmKfU+SO6avolp3hJ83ZpJ2eVOPnCGgFm9G/UV8uxAUPiKfJ7lg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cauah\\source\\repos\\WepApi1\\WepApi1\\WepApi1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cauah\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\npgsql\\4.1.5\\npgsql.4.1.5.nupkg.sha512",
+    "C:\\Users\\cauah\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
