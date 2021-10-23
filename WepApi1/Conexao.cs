@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Npgsql;
+﻿using Npgsql;
 
 namespace WepApi1
 {
@@ -12,7 +8,7 @@ namespace WepApi1
 
         public Conexao()
         {
-            conec.ConnectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=SENHA;Database=loja;";
+            conec.ConnectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=caua987311363;Database=loja;";
         }
 
         public NpgsqlConnection Conectar()

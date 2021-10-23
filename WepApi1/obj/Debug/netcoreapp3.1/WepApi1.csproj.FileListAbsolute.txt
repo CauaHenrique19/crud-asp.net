@@ -1,6 +1,5 @@
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\WepApi1.exe
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\WepApi1.deps.json
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\WepApi1.runtimeconfig.json
@@ -24,3 +23,8 @@ C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\Newtonsoft.J
 C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\cauah\source\repos\WepApi1\WepApi1\obj\Debug\netcoreapp3.1\WepApi1.csproj.CoreCompileInputs.cache
 C:\Users\cauah\source\repos\WepApi1\WepApi1\obj\Debug\netcoreapp3.1\WepApi1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\cauah\source\repos\WepApi1\WepApi1\obj\Debug\netcoreapp3.1\scopedcss\bundle\WepApi1.styles.css
+C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
+C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\cauah\source\repos\WepApi1\WepApi1\bin\Debug\netcoreapp3.1\System.Web.Http.dll
