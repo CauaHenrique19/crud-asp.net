@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using WepApi1.Models;
+using WepApi1.Repositories.CategoryRepository;
+using WepApi1.useCases;
+using WepApi1.useCases.CreateCategory;
+using WepApi1.useCases.ListAllCategories;
 
 namespace WepApi1.Controllers
 {
@@ -23,36 +26,21 @@ namespace WepApi1.Controllers
         [HttpGet]
         public List<Category> Get()
         {
-            List<Category> categories = new List<Category>();
-
-            NpgsqlCommand cmdSearch = new NpgsqlCommand("select * from categorias where \"deletadoEm\" isnull order by id", conec.Conectar());
-            NpgsqlDataReader reader = cmdSearch.ExecuteReader();
-
-            while (reader.Read())
-            {
-                categories.Add(new Category(
-                    Convert.ToInt32(reader["id"]), 
-                    Convert.ToString(reader["nome"])));
-            }
-
-            conec.Desconectar();
+            CategoryRepository categoryRepository = new CategoryRepository();
+            ListAllCategoriesUseCase listAllCategoriesUseCase = new ListAllCategoriesUseCase(categoryRepository);
+            var categories = listAllCategoriesUseCase.execute();
             return categories;
         }
 
         [HttpPost]
-        public MessageWithCategory Post(Category category)
+        public MessageWithCategory Post(ICreateCategoryDTO category)
         {
             try
             {
-                NpgsqlCommand cmdInsert = new NpgsqlCommand("insert into categorias values(default, @name) returning id;", conec.Conectar());
-
-                cmdInsert.Parameters.Clear();
-                cmdInsert.Parameters.AddWithValue("@name", category.name);
-
-                category.id = Convert.ToInt32(cmdInsert.ExecuteScalar());
-
-                conec.Desconectar();
-                return new MessageWithCategory() { message = "Categoria criada com sucesso!", category = category };
+                CategoryRepository categoryRepository = new CategoryRepository();
+                CreateCategoryUseCase createCategoryUseCase = new CreateCategoryUseCase(categoryRepository);
+                var categoryDb = createCategoryUseCase.execute(category);
+                return new MessageWithCategory() { message = "Categoria criada com sucesso!", category = categoryDb };
             }
             catch(NpgsqlException error)
             {

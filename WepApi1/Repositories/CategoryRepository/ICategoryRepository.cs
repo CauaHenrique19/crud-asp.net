@@ -3,7 +3,7 @@ using WepApi1.Models;
 
 namespace WepApi1.Repositories.CategoryRepository
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
         List<Category> GetAll();
         Category Save(Category category);

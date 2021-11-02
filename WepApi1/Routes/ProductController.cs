@@ -27,7 +27,6 @@ namespace WepApi1.Controllers
             ListAllProductsUseCase listAllProductsUseCase = new ListAllProductsUseCase(productRepository);
             List<Product> products = listAllProductsUseCase.execute();
             return products;
-
         }
 
         [HttpGet]

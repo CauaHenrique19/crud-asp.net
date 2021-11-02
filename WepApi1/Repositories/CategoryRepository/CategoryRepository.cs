@@ -1,8 +1,6 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WepApi1.Models;
 
 namespace WepApi1.Repositories.CategoryRepository
@@ -15,14 +13,17 @@ namespace WepApi1.Repositories.CategoryRepository
         {
             List<Category> categories = new List<Category>();
 
-            NpgsqlCommand cmdSearch = new NpgsqlCommand("select * from categorias where \"deletadoEm\" isnull order by id", conec.Conectar());
+            NpgsqlCommand cmdSearch = new NpgsqlCommand("select * from categories order by id", conec.Conectar());
             NpgsqlDataReader reader = cmdSearch.ExecuteReader();
 
             while (reader.Read())
             {
                 categories.Add(new Category(
                     Convert.ToInt32(reader["id"]),
-                    Convert.ToString(reader["nome"])));
+                    Convert.ToString(reader["name"]),
+                    Convert.ToString(reader["color"]),
+                    Convert.ToString(reader["icon"])
+                ));
             }
 
             conec.Desconectar();
@@ -31,10 +32,12 @@ namespace WepApi1.Repositories.CategoryRepository
 
         public Category Save(Category category)
         {
-            NpgsqlCommand cmdInsert = new NpgsqlCommand("insert into categorias values(default, @name) returning id;", conec.Conectar());
+            NpgsqlCommand cmdInsert = new NpgsqlCommand("insert into categories values(default, @name, @color, @icon) returning id;", conec.Conectar());
 
             cmdInsert.Parameters.Clear();
             cmdInsert.Parameters.AddWithValue("@name", category.name);
+            cmdInsert.Parameters.AddWithValue("@color", category.color);
+            cmdInsert.Parameters.AddWithValue("@icon", category.icon);
 
             category.id = Convert.ToInt32(cmdInsert.ExecuteScalar());
 
