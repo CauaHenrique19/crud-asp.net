@@ -6,6 +6,7 @@ using WepApi1.Repositories.CategoryRepository;
 using WepApi1.useCases;
 using WepApi1.useCases.CreateCategory;
 using WepApi1.useCases.ListAllCategories;
+using WepApi1.useCases.UpdateCategory;
 
 namespace WepApi1.Controllers
 {
@@ -49,21 +50,14 @@ namespace WepApi1.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
-        public MessageWithCategory Put(int id, Category category)
+        public MessageWithCategory Put(IUpdateCategoryDTO category)
         {
             try
             {
-                NpgsqlCommand cmdUpdate = new NpgsqlCommand("update categorias set nome = @name where id = @id", conec.Conectar());
-
-                cmdUpdate.Parameters.Clear();
-                cmdUpdate.Parameters.AddWithValue("@name", category.name);
-                cmdUpdate.Parameters.AddWithValue("@id", id);
-
-                cmdUpdate.ExecuteNonQuery();
-
-                conec.Desconectar();
-                return new MessageWithCategory() { message = "Categoria atualizada com sucesso!", category = category };
+                CategoryRepository categoryRepository = new CategoryRepository();
+                UpdateCategoryUseCase updateCategoryUseCase = new UpdateCategoryUseCase(categoryRepository);
+                var categoryUpdated = updateCategoryUseCase.execute(category);
+                return new MessageWithCategory() { message = "Categoria atualizada com sucesso!", category = categoryUpdated };
             }
             catch(NpgsqlException error)
             {

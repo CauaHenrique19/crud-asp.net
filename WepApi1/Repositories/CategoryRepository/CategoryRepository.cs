@@ -47,10 +47,15 @@ namespace WepApi1.Repositories.CategoryRepository
 
         public Category Update(Category category)
         {
-            NpgsqlCommand cmdUpdate = new NpgsqlCommand("update categorias set nome = @name where id = @id", conec.Conectar());
+            NpgsqlCommand cmdUpdate = new NpgsqlCommand("update categories " +
+                "set name = @name, " +
+                "color = @color, " +
+                "icon = @icon where id = @id", conec.Conectar());
 
             cmdUpdate.Parameters.Clear();
             cmdUpdate.Parameters.AddWithValue("@name", category.name);
+            cmdUpdate.Parameters.AddWithValue("@color", category.color);
+            cmdUpdate.Parameters.AddWithValue("@icon", category.icon);
             cmdUpdate.Parameters.AddWithValue("@id", category.id);
 
             cmdUpdate.ExecuteNonQuery();
@@ -61,7 +66,7 @@ namespace WepApi1.Repositories.CategoryRepository
 
         public void Delete(int id)
         {
-            NpgsqlCommand cmdDelete = new NpgsqlCommand($"delete from categorias where id = {id}", conec.Conectar());
+            NpgsqlCommand cmdDelete = new NpgsqlCommand($"delete from categories where id = {id}", conec.Conectar());
             cmdDelete.ExecuteNonQuery();
 
             conec.Desconectar();
