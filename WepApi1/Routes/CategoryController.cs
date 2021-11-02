@@ -5,6 +5,7 @@ using WepApi1.Models;
 using WepApi1.Repositories.CategoryRepository;
 using WepApi1.useCases;
 using WepApi1.useCases.CreateCategory;
+using WepApi1.useCases.DeleteCategory;
 using WepApi1.useCases.ListAllCategories;
 using WepApi1.useCases.UpdateCategory;
 
@@ -14,8 +15,6 @@ namespace WepApi1.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        Conexao conec = new Conexao();
-
         public class MessageWithCategory 
         {
             #nullable disable
@@ -66,15 +65,13 @@ namespace WepApi1.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
-        public string Delete(int id)
+        public string Delete(IDeleteCategoryDTO deleteCategoryDTO)
         {
             try
             {
-                NpgsqlCommand cmdDelete = new NpgsqlCommand($"delete from categorias where id = {id}", conec.Conectar());
-                cmdDelete.ExecuteNonQuery();
-
-                conec.Desconectar();
+                CategoryRepository categoryRepository = new CategoryRepository();
+                DeleteCategoryUseCase deleteCategoryUseCase = new DeleteCategoryUseCase(categoryRepository);
+                deleteCategoryUseCase.execute(deleteCategoryDTO);
                 return $"Categoria excluída com sucesso!";
             }
             catch(NpgsqlException error)
